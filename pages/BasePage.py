@@ -1,5 +1,8 @@
+from selenium.common import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
 import conftest
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as ec
 
 
 class BasePage:
@@ -12,3 +15,12 @@ class BasePage:
 
     def click(self, *locator):
         self.driver.find_element(*locator).click()
+
+    def wait_and_click_element(self, by, value, timeout=10):
+        try:
+            element = WebDriverWait(self.driver, timeout).until(
+                ec.element_to_be_clickable((by, value))
+            )
+            element.click()
+        except TimeoutException:
+            print(f"Element {by}='{value}' was not clickable within {timeout} seconds.")

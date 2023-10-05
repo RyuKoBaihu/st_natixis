@@ -1,6 +1,5 @@
 import pytest
 from selenium.webdriver.common.by import By
-
 from pages.BasePage import BasePage
 
 
@@ -9,7 +8,5 @@ from pages.BasePage import BasePage
 class TestExploringJobOffers:
     def test_exploring_job_offers(self):
         test = BasePage()
-        test.click(By.XPATH, '//*[@id="root"]/div/div/main/div[2]/div/div/p/a')
+        test.wait_and_click_element(By.XPATH, '//*[@id="root"]/div/div/main/div[2]/div/div/p/a')
         test.search("QA")
-
-

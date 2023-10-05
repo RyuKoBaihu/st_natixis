@@ -13,10 +13,7 @@ class BasePage:
     def search(self, text):
         self.driver.find_element(*self.searchBox).send_keys(text)
 
-    def click(self, *locator):
-        self.driver.find_element(*locator).click()
-
-    def wait_and_click_element(self, by, value, timeout=10):
+    def click(self, by, value, timeout=10):
         try:
             element = WebDriverWait(self.driver, timeout).until(
                 ec.element_to_be_clickable((by, value))

@@ -8,5 +8,5 @@ from pages.BasePage import BasePage
 class TestExploringJobOffers:
     def test_exploring_job_offers(self):
         test = BasePage()
-        test.wait_and_click_element(By.XPATH, '//*[@id="root"]/div/div/main/div[2]/div/div/p/a')
+        test.click(By.XPATH, '//*[@id="root"]/div/div/main/div[2]/div/div/p/a')
         test.search("QA")
